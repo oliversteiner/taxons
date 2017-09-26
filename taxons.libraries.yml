@@ -1,0 +1,10 @@
+taxons.main:
+  css:
+    theme:
+      assets/css/taxons.css: {}
+  js:
+    assets/js/taxons.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+

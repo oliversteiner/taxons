@@ -1,0 +1,42 @@
+##
+# Todo:  Check Permissions
+#
+#
+# Admin Page
+#
+#
+# Config Settings Page
+#
+taxons.settings_form:
+  path: '/admin/config/media/taxons'
+  defaults:
+    _form: '\Drupal\taxons\Form\UniGSettingsForm'
+    _title: 'Universal Gallery'
+  requirements:
+    _permission: 'administer vocabularies and terms'
+
+
+
+#
+# Sandbox
+#
+taxons.sandbox:
+  path: '/taxons/sandbox'
+  defaults:
+    _controller: '\Drupal\taxons\Controller\AdminController:sandboxPage'
+    _title: 'Sandbox'
+  requirements:
+    _permission: 'administer vocabularies and terms'
+
+
+
+#
+# AJAX Test
+#
+taxons.ajax.test:
+  path: '/taxons/ajaxtest/{image_nid}'
+  defaults:
+    _controller: '\Drupal\taxons\Controller\ProjectController:ajaxtest'
+    _title: 'Ajaxtest'
+  requirements:
+    _permission: 'administer vocabularies and terms'

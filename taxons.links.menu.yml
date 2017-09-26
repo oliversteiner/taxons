@@ -1,0 +1,20 @@
+#
+# Setting Page
+#
+taxons.settings_form:
+  title: 'Taxons - Taxonomy on Speed Settings'
+  description: 'Configure default settings'
+  route_name: taxons.settings_form
+  parent: 'system.admin_config_content'
+
+
+
+
+#
+# Content > Taxons > Sandbox
+#
+taxons.sandbox:
+    title: 'Sandbox'
+    description: 'Testing new Functions'
+    route_name: taxons.sandbox
+    parent: 'taxons.admin_content'

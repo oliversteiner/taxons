@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Module file for taxons.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function taxons_views_pre_render(ViewExecutable $view) {
+ // drupal_set_message($view->storage->id());
+
+    if (isset($view) && ($view->storage->id() === 'taxons')) {
+      //        $view->element['#attached']['library'][] = 'taxons/taxons.main';
+    }
+}
+
+function taxons_page_attachments(array &$attachments) {
+ //   $attachments['#attached']['library'][] = 'taxons/taxons.upload';
+}
+
+
+
+
+
+/**
+ * @defgroup taxons
+ * @ingroup taxonomy
+ * @{
+ *
+ *
+ */
+
+/**
+ * Implements hook_help().
+ *
+ *
+ * @see https://www.drupal.org/documentation/help-text-standards
+ *
+ * @see hook_help()
+ */
+function taxons_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.taxons':
+      // Help text for the admin section, using the module name in the path.
+        return t('Sorry, No help-page now.');
+  }
+}
+
+/**
+ * @} End of "defgroup taxons".
+ */
