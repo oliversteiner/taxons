@@ -10,10 +10,10 @@
 taxons.settings_form:
   path: '/admin/config/media/taxons'
   defaults:
-    _form: '\Drupal\taxons\Form\UniGSettingsForm'
-    _title: 'Universal Gallery'
+    _form: '\Drupal\taxons\Form\TaxonsSettingsForm'
+    _title: 'Taxons Settings'
   requirements:
-    _permission: 'administer vocabularies and terms'
+    _permission: 'administer'
 
 
 
@@ -26,7 +26,7 @@ taxons.sandbox:
     _controller: '\Drupal\taxons\Controller\AdminController:sandboxPage'
     _title: 'Sandbox'
   requirements:
-    _permission: 'administer vocabularies and terms'
+    _permission: 'administer'
 
 
 
@@ -34,9 +34,9 @@ taxons.sandbox:
 # AJAX Test
 #
 taxons.ajax.test:
-  path: '/taxons/ajaxtest/{image_nid}'
+  path: '/taxons/ajaxtest/{tid}'
   defaults:
-    _controller: '\Drupal\taxons\Controller\ProjectController:ajaxtest'
+    _controller: '\Drupal\taxons\Controller\AdminController:ajaxtest'
     _title: 'Ajaxtest'
   requirements:
-    _permission: 'administer vocabularies and terms'
+    _permission: 'administer'
