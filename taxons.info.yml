@@ -3,6 +3,6 @@ type: module
 description: 'generate and update Taxonomy on the Fly'
 package: Taxonomy
 core: 8.x
-configure: taxons.settings_form
+configure: taxons/taxons.settings_form
 dependencies:
   - drupal:node
