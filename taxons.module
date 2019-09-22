@@ -19,11 +19,6 @@ function taxons_views_pre_render(ViewExecutable $view) {
     }
 }
 
-function taxons_page_attachments(array &$attachments) {
- //   $attachments['#attached']['library'][] = 'taxons/taxons.upload';
-}
-
-
 
 
 

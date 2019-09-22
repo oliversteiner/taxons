@@ -1,0 +1,8 @@
+#
+# Setting Page
+#
+taxons.settings_form:
+  title: 'Taxons - Taxonomy on Speed Settings'
+  description: 'Configure default settings'
+  route_name: taxons.settings_form
+  parent: 'system.admin_config_content'
