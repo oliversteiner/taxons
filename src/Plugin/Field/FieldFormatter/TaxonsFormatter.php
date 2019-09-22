@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ost
- * Date: 07.11.17
- * Time: 01:49
- */
+
 
 namespace Drupal\taxons\Plugin\Field\FieldFormatter;
 
@@ -136,7 +131,7 @@ class TaxonsFormatter extends EntityReferenceFormatterBase
       if (in_array($term_id, $active_tids)) {
         $class = $default_classes;
         $label = '<span></span>' . $term_name;
-        array_push($class, 'active');
+        $class[] = 'active';
       } else {
         $label = $term_name;
         $class = $default_classes;

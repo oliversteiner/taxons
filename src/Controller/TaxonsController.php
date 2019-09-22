@@ -2,11 +2,14 @@
 
 namespace Drupal\taxons\Controller;
 
+use Drupal;
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityStorageException;
 
 /**
  * Controller routines for page example routes.
@@ -26,11 +29,12 @@ class TaxonsController extends ControllerBase
    * @param $term_tid
    * @param $field_name
    *
-   * @return \Drupal\Core\Ajax\AjaxResponse
+   * @return AjaxResponse
    *
-   * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws EntityStorageException
+   * @throws PluginNotFoundException
    */
-  public static function toggleTag($target_nid, $term_tid, $field_name, $values)
+  public static function toggleTag($target_nid, $term_tid, $field_name, $values): AjaxResponse
   {
     $result = self::_toggleTag($target_nid, $term_tid, $field_name, $values);
 
@@ -80,8 +84,8 @@ class TaxonsController extends ControllerBase
    * @param $value
    *
    * @return array
-   * @throws \Drupal\Core\Entity\EntityStorageException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws EntityStorageException
+   * @throws PluginNotFoundException
    */
   public static function _toggleTag($target_nid, $term_tid, $field_name, $value)
   {
@@ -92,10 +96,11 @@ class TaxonsController extends ControllerBase
       'tid' => $term_tid,
       'field_name' => $field_name,
     ];
+    $entity = null;
 
     // Load Node
     try {
-      $entity = \Drupal::entityTypeManager()
+      $entity = Drupal::entityTypeManager()
         ->getStorage('node')
         ->load($target_nid);
     } catch (InvalidPluginDefinitionException $e) {
@@ -112,7 +117,7 @@ class TaxonsController extends ControllerBase
         $arr_item_id[] = $item['target_id'];
       }
 
-      $item_id_unique = array_unique($arr_item_id); // performace?
+      $item_id_unique = array_unique($arr_item_id);
       $position = array_search($term_tid, $item_id_unique, false);
 
       if ($position !== false) {
